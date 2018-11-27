@@ -1,6 +1,8 @@
 Yii2 EAuth extension
 ====================
 
+Fork [this](https://github.com/Nodge/yii2-eauth)
+
 EAuth extension allows to authenticate users with accounts on other websites.
 Supported protocols: OpenID, OAuth 1.0 and OAuth 2.0.
 
