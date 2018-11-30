@@ -122,7 +122,7 @@ Add the following in your config:
 ...
 	'components' => [
 		'eauth' => [
-			'class' => 'nodge\eauth\EAuth',
+			'class' => 'andyzinger\eauth\EAuth',
 			'popup' => true, // Use the popup window instead of redirecting.
 			'cache' => false, // Cache component name or false to disable cache. Defaults to 'cache' on production environments.
 			'cacheExpire' => 0, // Cache lifetime. Defaults to 0 - means unlimited.
@@ -456,7 +456,7 @@ You can save access_token to your database by using custom token storage in your
 ...
 	'components' => [
 		'eauth' => [
-			'class' => 'nodge\eauth\EAuth',
+			'class' => 'andyzinger\eauth\EAuth',
 			'tokenStorage' => [
 				'class' => '@app\eauth\DatabaseTokenStorage',
 			],

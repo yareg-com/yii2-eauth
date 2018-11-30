@@ -49,7 +49,7 @@ class Widget extends \yii\base\Widget
 	 * @var boolean include the CSS file. Default is true.
 	 * If this is set false, you are responsible to explicitly include the necessary CSS file in your page.
 	 */
-	public $assetBundle = 'nodge\\eauth\\assets\\WidgetAssetBundle';
+	public $assetBundle = 'andyzinger\\eauth\\assets\\WidgetAssetBundle';
 
 	/**
 	 * Initializes the widget.

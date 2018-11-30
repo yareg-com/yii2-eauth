@@ -45,7 +45,7 @@ class EAuth extends Object
 	/**
 	 * @var string popup redirect view with custom js code
 	 */
-	protected $redirectWidget = '\\nodge\\eauth\\RedirectWidget';
+	protected $redirectWidget = '\\andyzinger\\eauth\\RedirectWidget';
 
 	/**
 	 * @var array TokenStorage class.
