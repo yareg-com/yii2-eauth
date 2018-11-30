@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth;
+namespace andyzinger\eauth;
 
 class ErrorException extends \yii\base\ErrorException
 {

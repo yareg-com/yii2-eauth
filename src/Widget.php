@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth;
+namespace andyzinger\eauth;
 
 use Yii;
 
@@ -62,7 +62,7 @@ class Widget extends \yii\base\Widget
 		parent::init();
 
 		// EAuth component
-		/** @var $component \nodge\eauth\EAuth */
+		/** @var $component \andyzinger\eauth\EAuth */
 		$component = Yii::$app->get($this->component);
 
 		// Some default properties from component configuration

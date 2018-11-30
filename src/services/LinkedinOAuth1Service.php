@@ -10,9 +10,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth\services;
+namespace andyzinger\eauth\services;
 
-use nodge\eauth\oauth1\Service;
+use andyzinger\eauth\oauth1\Service;
 
 /**
  * LinkedIn provider class.

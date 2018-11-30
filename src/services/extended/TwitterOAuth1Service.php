@@ -7,9 +7,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth\services\extended;
+namespace andyzinger\eauth\services\extended;
 
-class TwitterOAuth1Service extends \nodge\eauth\services\TwitterOAuth1Service
+class TwitterOAuth1Service extends \andyzinger\eauth\services\TwitterOAuth1Service
 {
 
 	protected function fetchAttributes()

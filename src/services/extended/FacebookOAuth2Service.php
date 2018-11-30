@@ -7,9 +7,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth\services\extended;
+namespace andyzinger\eauth\services\extended;
 
-class FacebookOAuth2Service extends \nodge\eauth\services\FacebookOAuth2Service
+class FacebookOAuth2Service extends \andyzinger\eauth\services\FacebookOAuth2Service
 {
 
     protected $scopes = [

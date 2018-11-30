@@ -11,9 +11,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth\services;
+namespace andyzinger\eauth\services;
 
-use nodge\eauth\oauth2\Service;
+use andyzinger\eauth\oauth2\Service;
 
 /**
  * Odnoklassniki.Ru provider class.

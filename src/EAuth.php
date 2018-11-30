@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth;
+namespace andyzinger\eauth;
 
 use Yii;
 use yii\base\Object;
@@ -51,14 +51,14 @@ class EAuth extends Object
 	 * @var array TokenStorage class.
 	 */
 	protected $tokenStorage = [
-		'class' => 'nodge\eauth\oauth\SessionTokenStorage',
+		'class' => 'andyzinger\eauth\oauth\SessionTokenStorage',
 	];
 
 	/**
 	 * @var array HttpClient class.
 	 */
 	protected $httpClient = [
-		'class' => 'nodge\eauth\oauth\HttpClient',
+		'class' => 'andyzinger\eauth\oauth\HttpClient',
 //		'useStreamsFallback' => false,
 	];
 

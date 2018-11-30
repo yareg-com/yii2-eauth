@@ -7,9 +7,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth\services;
+namespace andyzinger\eauth\services;
 
-use nodge\eauth\openid\Service;
+use andyzinger\eauth\openid\Service;
 
 /**
  * Yahoo provider class.

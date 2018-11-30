@@ -7,13 +7,13 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace nodge\eauth\oauth;
+namespace andyzinger\eauth\oauth;
 
 use Yii;
 use OAuth\Common\Storage\TokenStorageInterface;
-use nodge\eauth\EAuth;
-use nodge\eauth\IAuthService;
-use nodge\eauth\ErrorException;
+use andyzinger\eauth\EAuth;
+use andyzinger\eauth\IAuthService;
+use andyzinger\eauth\ErrorException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
@@ -22,7 +22,7 @@ use yii\helpers\Url;
  *
  * @package application.extensions.eauth
  */
-abstract class ServiceBase extends \nodge\eauth\ServiceBase implements IAuthService
+abstract class ServiceBase extends \andyzinger\eauth\ServiceBase implements IAuthService
 {
 
 	/**
@@ -76,7 +76,7 @@ abstract class ServiceBase extends \nodge\eauth\ServiceBase implements IAuthServ
 	}
 
 	/**
-	 * @return \nodge\eauth\oauth1\ServiceProxy|\nodge\eauth\oauth2\ServiceProxy
+	 * @return \andyzinger\eauth\oauth1\ServiceProxy|\andyzinger\eauth\oauth2\ServiceProxy
 	 */
 	abstract protected function getProxy();
 

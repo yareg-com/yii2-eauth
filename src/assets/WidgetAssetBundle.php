@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace nodge\eauth\assets;
+namespace andyzinger\eauth\assets;
 
 use yii\web\AssetBundle;
 
