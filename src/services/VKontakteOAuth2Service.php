@@ -38,6 +38,7 @@ class VKontakteOAuth2Service extends Service
 	protected $baseApiUrl = 'https://api.vk.com/method/';
 
 	protected $response;
+    protected $fields = '';
 
 	protected function fetchAttributes() : bool
 	{
@@ -45,7 +46,7 @@ class VKontakteOAuth2Service extends Service
 		$info = $this->makeSignedRequest('users.get.json', [
 			'query' => [
 				'uids' => $tokenData['params']['user_id'],
-				'fields' => '', // uid, first_name and last_name is always available
+				'fields' => $this->fields, // uid, first_name and last_name is always available
 				//'fields' => 'nickname, sex, bdate, city, country, timezone, photo, photo_medium, photo_big, photo_rec',
 				'v' => self::API_VERSION,
 			],
