@@ -37,6 +37,8 @@ class VKontakteOAuth2Service extends Service
 	];
 	protected $baseApiUrl = 'https://api.vk.com/method/';
 
+	protected $response;
+
 	protected function fetchAttributes() : bool
 	{
 		$tokenData = $this->getAccessTokenData();
@@ -49,11 +51,11 @@ class VKontakteOAuth2Service extends Service
 			],
 		]);
 
-		$info = $info['response'][0];
+        $this->response = $info['response'][0];
 
-		$this->attributes['id'] = $info['id'];
-		$this->attributes['name'] = $info['first_name'] . ' ' . $info['last_name'];
-		$this->attributes['url'] = 'https://vk.com/id' . $info['id'];
+		$this->attributes['id'] = $this->response['id'];
+		$this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
+		$this->attributes['url'] = 'https://vk.com/id' . $this->response['id'];
 
 		/*if (!empty($info['nickname']))
 			$this->attributes['username'] = $info['nickname'];
