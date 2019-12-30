@@ -150,7 +150,7 @@ abstract class ServiceBase extends \yareg\eauth\ServiceBase implements IAuthServ
      */
     public function makeRequest($url, $options = [], $parseResponse = true)
     {
-        $headers = isset($options['headers']) ? $options['headers'] : [];
+        $headers = $options['headers'] ?? [];
         $options['headers'] = array_merge($this->getExtraApiHeaders(), $headers);
 
         return parent::makeRequest($url, $options, $parseResponse);
@@ -158,6 +158,7 @@ abstract class ServiceBase extends \yareg\eauth\ServiceBase implements IAuthServ
 
 	/**
 	 * @return array|null An array with valid access_token information.
+     * @throws ErrorException
 	 */
 	protected function getAccessTokenData()
 	{

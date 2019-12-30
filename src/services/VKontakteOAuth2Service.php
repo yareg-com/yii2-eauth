@@ -32,31 +32,36 @@ class VKontakteOAuth2Service extends Service
 
 	protected $scopes = [self::SCOPE_EMAIL];
 	protected $providerOptions = [
-		'authorize' => 'https://api.vk.com/oauth/authorize',
+		'authorize'    => 'https://api.vk.com/oauth/authorize',
 		'access_token' => 'https://api.vk.com/oauth/access_token',
 	];
 	protected $baseApiUrl = 'https://api.vk.com/method/';
 
 	protected $response;
-    protected $fields = '';
+    protected $fields = ''; // 'nickname, sex, bdate, city, country, timezone, photo, photo_medium, photo_big, photo_rec'
+                            // uid, first_name and last_name is always available
 
+    /**
+     * @return bool
+     * @throws \yareg\eauth\ErrorException
+     */
 	protected function fetchAttributes() : bool
 	{
 		$tokenData = $this->getAccessTokenData();
-		$info = $this->makeSignedRequest('users.get.json', [
+
+		$info = $this->makeSignedRequest('users.get', [
 			'query' => [
-				'uids' => $tokenData['params']['user_id'],
-				'fields' => $this->fields, // uid, first_name and last_name is always available
-				//'fields' => 'nickname, sex, bdate, city, country, timezone, photo, photo_medium, photo_big, photo_rec',
-				'v' => self::API_VERSION,
+				'uids'   => $tokenData['params']['user_id'],
+				'fields' => $this->fields,
+				'v'      => self::API_VERSION,
 			],
 		]);
 
         $this->response = $info['response'][0];
 
-		$this->attributes['id'] = $this->response['id'];
+		$this->attributes['id']   = $this->response['id'];
 		$this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
-		$this->attributes['url'] = 'https://vk.com/id' . $this->response['id'];
+		$this->attributes['url']  = 'https://vk.com/id' . $this->response['id'];
 
 		/*if (!empty($info['nickname']))
 			$this->attributes['username'] = $info['nickname'];
