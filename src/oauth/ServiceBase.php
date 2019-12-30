@@ -184,7 +184,7 @@ abstract class ServiceBase extends \yareg\eauth\ServiceBase implements IAuthServ
 	 */
 	public function getAccessTokenResponseError($data)
 	{
-		return isset($data['error']) ? $data['error'] : null;
+		return $data['error'] ?? null;
 	}
 
     /**
@@ -192,7 +192,7 @@ abstract class ServiceBase extends \yareg\eauth\ServiceBase implements IAuthServ
      *
      * @return array
      */
-    public function getExtraApiHeaders()
+    public function getExtraApiHeaders() : array
     {
         return [];
     }
