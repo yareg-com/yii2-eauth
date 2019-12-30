@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth;
+namespace yareg\eauth;
 
 use Yii;
 use yii\base\Object;
@@ -30,7 +30,7 @@ class EAuth extends Object
 	/**
 	 * @var boolean Whether to use popup window for the authorization dialog.
 	 */
-	protected $popup = true;
+	public $popup = true;
 
 	/**
 	 * @var string|bool Cache component name to use. False to disable cache.
@@ -45,20 +45,20 @@ class EAuth extends Object
 	/**
 	 * @var string popup redirect view with custom js code
 	 */
-	protected $redirectWidget = '\\andyzinger\\eauth\\RedirectWidget';
+	protected $redirectWidget = '\\yareg\\eauth\\RedirectWidget';
 
 	/**
 	 * @var array TokenStorage class.
 	 */
 	protected $tokenStorage = [
-		'class' => 'andyzinger\eauth\oauth\SessionTokenStorage',
+		'class' => 'yareg\eauth\oauth\SessionTokenStorage',
 	];
 
 	/**
 	 * @var array HttpClient class.
 	 */
 	protected $httpClient = [
-		'class' => 'andyzinger\eauth\oauth\HttpClient',
+		'class' => 'yareg\eauth\oauth\HttpClient',
 //		'useStreamsFallback' => false,
 	];
 
@@ -297,7 +297,7 @@ class EAuth extends Object
 	 * @param ServiceBase $identity the class instance.
 	 * @return string serialized value.
 	 */
-	public function toString($identity)
+	public function toString($identity) : string
 	{
 		return serialize($identity);
 	}
@@ -308,9 +308,9 @@ class EAuth extends Object
 	 * @param string $identity serialized value.
 	 * @return ServiceBase the class instance.
 	 */
-	public function fromString($identity)
+	public function fromString($identity) : ServiceBase
 	{
-		return unserialize($identity);
+		return unserialize($identity, ['allowed_classes' => false]);
 	}
 
 }

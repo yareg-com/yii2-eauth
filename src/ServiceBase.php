@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth;
+namespace yareg\eauth;
 
 use Yii;
 use yii\base\Object;

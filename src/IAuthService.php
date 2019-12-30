@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth;
+namespace yareg\eauth;
 
 /**
  * IAuthService is the interface for all service types and providers.

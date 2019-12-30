@@ -9,10 +9,10 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\services;
+namespace yareg\eauth\services;
 
 use OAuth\OAuth1\Token\TokenInterface;
-use andyzinger\eauth\oauth1\Service;
+use yareg\eauth\oauth1\Service;
 
 
 /**

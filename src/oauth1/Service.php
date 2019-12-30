@@ -7,17 +7,17 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\oauth1;
+namespace yareg\eauth\oauth1;
 
 use Yii;
 use OAuth\Common\Exception\Exception as OAuthException;
 use OAuth\Common\Http\Uri\Uri;
 use OAuth\Common\Consumer\Credentials;
 use OAuth\OAuth1\Signature\Signature;
-use andyzinger\eauth\EAuth;
-use andyzinger\eauth\ErrorException;
-use andyzinger\eauth\IAuthService;
-use andyzinger\eauth\oauth\ServiceBase;
+use yareg\eauth\EAuth;
+use yareg\eauth\ErrorException;
+use yareg\eauth\IAuthService;
+use yareg\eauth\oauth\ServiceBase;
 
 /**
  * EOAuthService is a base class for all OAuth providers.

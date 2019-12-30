@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\oauth;
+namespace yareg\eauth\oauth;
 
 use Yii;
 use OAuth\Common\Http\Client\AbstractClient;

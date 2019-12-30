@@ -7,13 +7,13 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\oauth;
+namespace yareg\eauth\oauth;
 
 use Yii;
 use OAuth\Common\Storage\TokenStorageInterface;
-use andyzinger\eauth\EAuth;
-use andyzinger\eauth\IAuthService;
-use andyzinger\eauth\ErrorException;
+use yareg\eauth\EAuth;
+use yareg\eauth\IAuthService;
+use yareg\eauth\ErrorException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
@@ -22,7 +22,7 @@ use yii\helpers\Url;
  *
  * @package application.extensions.eauth
  */
-abstract class ServiceBase extends \andyzinger\eauth\ServiceBase implements IAuthService
+abstract class ServiceBase extends \yareg\eauth\ServiceBase implements IAuthService
 {
 
 	/**
@@ -76,7 +76,7 @@ abstract class ServiceBase extends \andyzinger\eauth\ServiceBase implements IAut
 	}
 
 	/**
-	 * @return \andyzinger\eauth\oauth1\ServiceProxy|\andyzinger\eauth\oauth2\ServiceProxy
+	 * @return \yareg\eauth\oauth1\ServiceProxy|\yareg\eauth\oauth2\ServiceProxy
 	 */
 	abstract protected function getProxy();
 

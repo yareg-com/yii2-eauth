@@ -7,14 +7,14 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\openid;
+namespace yareg\eauth\openid;
 
 use \Yii;
 use \LightOpenID;
 use yii\web\HttpException;
-use andyzinger\eauth\ServiceBase;
-use andyzinger\eauth\IAuthService;
-use andyzinger\eauth\ErrorException;
+use yareg\eauth\ServiceBase;
+use yareg\eauth\IAuthService;
+use yareg\eauth\ErrorException;
 
 /**
  * EOpenIDService is a base class for all OpenID providers.

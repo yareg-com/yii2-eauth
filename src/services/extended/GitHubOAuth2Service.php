@@ -7,9 +7,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\services\extended;
+namespace yareg\eauth\services\extended;
 
-class GitHubOAuth2Service extends \andyzinger\eauth\services\GitHubOAuth2Service
+class GitHubOAuth2Service extends \yareg\eauth\services\GitHubOAuth2Service
 {
 
 	protected function fetchAttributes()

@@ -7,9 +7,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\services\extended;
+namespace yareg\eauth\services\extended;
 
-class TwitterOAuth1Service extends \andyzinger\eauth\services\TwitterOAuth1Service
+class TwitterOAuth1Service extends \yareg\eauth\services\TwitterOAuth1Service
 {
 
 	protected function fetchAttributes()

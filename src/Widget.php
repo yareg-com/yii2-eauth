@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth;
+namespace yareg\eauth;
 
 use Yii;
 
@@ -49,7 +49,7 @@ class Widget extends \yii\base\Widget
 	 * @var boolean include the CSS file. Default is true.
 	 * If this is set false, you are responsible to explicitly include the necessary CSS file in your page.
 	 */
-	public $assetBundle = 'andyzinger\\eauth\\assets\\WidgetAssetBundle';
+	public $assetBundle = 'yareg\\eauth\\assets\\WidgetAssetBundle';
 
 	/**
 	 * Initializes the widget.
@@ -62,7 +62,7 @@ class Widget extends \yii\base\Widget
 		parent::init();
 
 		// EAuth component
-		/** @var $component \andyzinger\eauth\EAuth */
+		/** @var $component \yareg\eauth\EAuth */
 		$component = Yii::$app->get($this->component);
 
 		// Some default properties from component configuration

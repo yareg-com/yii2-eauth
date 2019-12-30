@@ -9,10 +9,10 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\services;
+namespace yareg\eauth\services;
 
 use OAuth\Common\Token\TokenInterface;
-use andyzinger\eauth\oauth2\Service;
+use yareg\eauth\oauth2\Service;
 
 /**
  * Yandex OAuth provider class.

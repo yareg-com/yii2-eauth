@@ -9,10 +9,10 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\services;
+namespace yareg\eauth\services;
 
 use OAuth\OAuth2\Service\ServiceInterface;
-use andyzinger\eauth\oauth2\Service;
+use yareg\eauth\oauth2\Service;
 
 /**
  * Microsoft Live provider class.

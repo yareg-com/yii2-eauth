@@ -7,9 +7,9 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\services;
+namespace yareg\eauth\services;
 
-use andyzinger\eauth\openid\Service;
+use yareg\eauth\openid\Service;
 
 /**
  * Steam provider class.

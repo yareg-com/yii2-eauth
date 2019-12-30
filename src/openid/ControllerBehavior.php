@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php
  */
 
-namespace andyzinger\eauth\openid;
+namespace yareg\eauth\openid;
 
 use Yii;
 use yii\base\Action;
