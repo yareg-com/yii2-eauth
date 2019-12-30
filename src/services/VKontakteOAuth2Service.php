@@ -21,23 +21,23 @@ use OAuth\OAuth2\Service\ServiceInterface;
  */
 class VKontakteOAuth2Service extends Service
 {
-
+	const SCOPE_EMAIL = 'email';
 	const SCOPE_FRIENDS = 'friends';
-	const API_VERSION = '5.57';
+	const API_VERSION = '5.89';
 
 	protected $name = 'vkontakte';
 	protected $title = 'VK.com';
 	protected $type = 'OAuth2';
 	protected $jsArguments = ['popup' => ['width' => 585, 'height' => 350]];
 
-	protected $scopes = [self::SCOPE_FRIENDS];
+	protected $scopes = [self::SCOPE_EMAIL, self::SCOPE_FRIENDS];
 	protected $providerOptions = [
-		'authorize' => 'http://api.vk.com/oauth/authorize',
+		'authorize' => 'https://api.vk.com/oauth/authorize',
 		'access_token' => 'https://api.vk.com/oauth/access_token',
 	];
 	protected $baseApiUrl = 'https://api.vk.com/method/';
 
-	protected function fetchAttributes()
+	protected function fetchAttributes() : bool
 	{
 		$tokenData = $this->getAccessTokenData();
 		$info = $this->makeSignedRequest('users.get.json', [
@@ -53,7 +53,7 @@ class VKontakteOAuth2Service extends Service
 
 		$this->attributes['id'] = $info['id'];
 		$this->attributes['name'] = $info['first_name'] . ' ' . $info['last_name'];
-		$this->attributes['url'] = 'http://vk.com/id' . $info['id'];
+		$this->attributes['url'] = 'https://vk.com/id' . $info['id'];
 
 		/*if (!empty($info['nickname']))
 			$this->attributes['username'] = $info['nickname'];
@@ -79,7 +79,7 @@ class VKontakteOAuth2Service extends Service
 	 * Returns the error array.
 	 *
 	 * @param array $response
-	 * @return array the error array with 2 keys: code and message. Should be null if no errors.
+	 * @return array | null the error array with 2 keys: code and message. Should be null if no errors.
 	 */
 	protected function fetchResponseError($response)
 	{
@@ -89,9 +89,9 @@ class VKontakteOAuth2Service extends Service
 //				'message' => is_string($response['error']) ? $response['error'] : $response['error']['error_msg'],
 //				'message' => is_string($response['error']) ? $response['error'] : $response['error']['error_msg'],
 			];
-		} else {
-			return null;
 		}
+
+		return null;
 	}
 
 	/**
@@ -115,7 +115,7 @@ class VKontakteOAuth2Service extends Service
 	 *
 	 * @return int
 	 */
-	public function getAuthorizationMethod()
+	public function getAuthorizationMethod() : int
 	{
 		return ServiceInterface::AUTHORIZATION_METHOD_QUERY_STRING;
 	}
