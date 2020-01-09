@@ -197,4 +197,9 @@ abstract class ServiceBase extends \yareg\eauth\ServiceBase implements IAuthServ
     {
         return [];
     }
+
+    public function getExtraParams() : array
+    {
+        return $this->getProxy()->getAccessToken()->getExtraParams();
+    }
 }
