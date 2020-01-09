@@ -130,9 +130,4 @@ class VKontakteOAuth2Service extends Service
 		return ServiceInterface::AUTHORIZATION_METHOD_QUERY_STRING;
 	}
 
-/*	public function getExtraParams() : array
-    {
-	    return $this->getProxy()->getAccessToken()->getExtraParams();
-    }*/
-
 }

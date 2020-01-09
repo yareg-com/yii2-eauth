@@ -495,6 +495,9 @@ abstract class ServiceBase extends Object implements IAuthService
         return null;
     }
 
+    /**
+     * Returns the extra params available in token
+     */
     public function getExtraParams() : array
     {
         return [];

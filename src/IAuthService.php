@@ -126,6 +126,9 @@ interface IAuthService
 	 */
 	public function hasAttribute($key);
 
+    /**
+     * Returns the extra params available in token
+     */
     public function getExtraParams();
 
 }
