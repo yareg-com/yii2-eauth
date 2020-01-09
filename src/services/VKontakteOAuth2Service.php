@@ -21,13 +21,13 @@ use OAuth\OAuth2\Service\ServiceInterface;
  */
 class VKontakteOAuth2Service extends Service
 {
-	const SCOPE_EMAIL = 'email';
+	const SCOPE_EMAIL   = 'email';
 	const SCOPE_FRIENDS = 'friends';
-	const API_VERSION = '5.103';
+	const API_VERSION   = '5.103';
 
-	protected $name = 'vkontakte';
-	protected $title = 'VK.com';
-	protected $type = 'OAuth2';
+	protected $name        = 'vkontakte';
+	protected $title       = 'VK.com';
+	protected $type        = 'OAuth2';
 	protected $jsArguments = ['popup' => ['width' => 585, 'height' => 350]];
 
 	protected $scopes = [self::SCOPE_EMAIL];
@@ -49,7 +49,7 @@ class VKontakteOAuth2Service extends Service
 	{
 		$tokenData = $this->getAccessTokenData();
 
-		$info = $this->makeSignedRequest('users.get', [
+		$data = $this->makeSignedRequest('users.get', [
 			'query' => [
 				'uids'   => $tokenData['params']['user_id'],
 				'fields' => $this->fields,
@@ -57,35 +57,32 @@ class VKontakteOAuth2Service extends Service
 			],
 		]);
 
-        if(isset($info['response'])) {
+		if(empty($data['response'])) { return false; }
 
-            $this->response = $info['response'][0];
+        $this->response = $data['response'][0];
 
-            $this->attributes['id']   = $this->response['id'];
-            $this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
-            $this->attributes['url']  = 'https://vk.com/id' . $this->response['id'];
+        $this->attributes['id']   = $this->response['id'];
+        $this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
+        $this->attributes['url']  = 'https://vk.com/id' . $this->response['id'];
 
-            /*if (!empty($info['nickname']))
-                $this->attributes['username'] = $info['nickname'];
-            else
-                $this->attributes['username'] = 'id'.$info['uid'];
+        /*if (!empty($info['nickname']))
+            $this->attributes['username'] = $info['nickname'];
+        else
+            $this->attributes['username'] = 'id'.$info['uid'];
 
-            $this->attributes['gender'] = $info['sex'] == 1 ? 'F' : 'M';
+        $this->attributes['gender'] = $info['sex'] == 1 ? 'F' : 'M';
 
-            $this->attributes['city'] = $info['city'];
-            $this->attributes['country'] = $info['country'];
+        $this->attributes['city'] = $info['city'];
+        $this->attributes['country'] = $info['country'];
 
-            $this->attributes['timezone'] = timezone_name_from_abbr('', $info['timezone']*3600, date('I'));;
+        $this->attributes['timezone'] = timezone_name_from_abbr('', $info['timezone']*3600, date('I'));;
 
-            $this->attributes['photo'] = $info['photo'];
-            $this->attributes['photo_medium'] = $info['photo_medium'];
-            $this->attributes['photo_big'] = $info['photo_big'];
-            $this->attributes['photo_rec'] = $info['photo_rec'];*/
+        $this->attributes['photo'] = $info['photo'];
+        $this->attributes['photo_medium'] = $info['photo_medium'];
+        $this->attributes['photo_big'] = $info['photo_big'];
+        $this->attributes['photo_rec'] = $info['photo_rec'];*/
 
-            return true;
-        }
-
-		return false;
+        return true;
 	}
 
 	/**
@@ -132,5 +129,10 @@ class VKontakteOAuth2Service extends Service
 	{
 		return ServiceInterface::AUTHORIZATION_METHOD_QUERY_STRING;
 	}
+
+	public function getExtraParams() : array
+    {
+	    return $this->getProxy()->getAccessToken()->getExtraParams();
+    }
 
 }
