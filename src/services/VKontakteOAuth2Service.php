@@ -57,30 +57,35 @@ class VKontakteOAuth2Service extends Service
 			],
 		]);
 
-        $this->response = $info['response'][0];
+        if(isset($info['response'])) {
 
-		$this->attributes['id']   = $this->response['id'];
-		$this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
-		$this->attributes['url']  = 'https://vk.com/id' . $this->response['id'];
+            $this->response = $info['response'][0];
 
-		/*if (!empty($info['nickname']))
-			$this->attributes['username'] = $info['nickname'];
-		else
-			$this->attributes['username'] = 'id'.$info['uid'];
+            $this->attributes['id']   = $this->response['id'];
+            $this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
+            $this->attributes['url']  = 'https://vk.com/id' . $this->response['id'];
 
-		$this->attributes['gender'] = $info['sex'] == 1 ? 'F' : 'M';
+            /*if (!empty($info['nickname']))
+                $this->attributes['username'] = $info['nickname'];
+            else
+                $this->attributes['username'] = 'id'.$info['uid'];
 
-		$this->attributes['city'] = $info['city'];
-		$this->attributes['country'] = $info['country'];
+            $this->attributes['gender'] = $info['sex'] == 1 ? 'F' : 'M';
 
-		$this->attributes['timezone'] = timezone_name_from_abbr('', $info['timezone']*3600, date('I'));;
+            $this->attributes['city'] = $info['city'];
+            $this->attributes['country'] = $info['country'];
 
-		$this->attributes['photo'] = $info['photo'];
-		$this->attributes['photo_medium'] = $info['photo_medium'];
-		$this->attributes['photo_big'] = $info['photo_big'];
-		$this->attributes['photo_rec'] = $info['photo_rec'];*/
+            $this->attributes['timezone'] = timezone_name_from_abbr('', $info['timezone']*3600, date('I'));;
 
-		return true;
+            $this->attributes['photo'] = $info['photo'];
+            $this->attributes['photo_medium'] = $info['photo_medium'];
+            $this->attributes['photo_big'] = $info['photo_big'];
+            $this->attributes['photo_rec'] = $info['photo_rec'];*/
+
+            return true;
+        }
+
+		return false;
 	}
 
 	/**
