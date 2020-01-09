@@ -126,4 +126,6 @@ interface IAuthService
 	 */
 	public function hasAttribute($key);
 
+    public function getExtraParams();
+
 }

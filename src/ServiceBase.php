@@ -494,4 +494,10 @@ abstract class ServiceBase extends Object implements IAuthService
         }
         return null;
     }
+
+    public function getExtraParams() : array
+    {
+        return [];
+    }
+
 }
