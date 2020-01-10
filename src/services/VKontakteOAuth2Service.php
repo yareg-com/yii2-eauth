@@ -38,6 +38,7 @@ class VKontakteOAuth2Service extends Service
 	protected $baseApiUrl = 'https://api.vk.com/method/';
 
 	protected $response;
+	protected $lang   = 'ru';
     protected $fields = ''; // 'nickname, sex, bdate, city, country, timezone, photo, photo_medium, photo_big, photo_rec'
                             // uid, first_name and last_name is always available
 
@@ -54,6 +55,7 @@ class VKontakteOAuth2Service extends Service
 				'uids'   => $tokenData['params']['user_id'],
 				'fields' => $this->fields,
 				'v'      => self::API_VERSION,
+                'lang'   => $this->lang
 			],
 		]);
 
