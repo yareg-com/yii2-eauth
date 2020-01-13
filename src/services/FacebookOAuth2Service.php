@@ -25,29 +25,33 @@ class FacebookOAuth2Service extends Service
 	 * Full list of scopes may be found here:
 	 * https://developers.facebook.com/docs/authentication/permissions/
 	 */
-	const SCOPE_EMAIL = 'email';
+	const SCOPE_EMAIL         = 'email';
 	const SCOPE_USER_BIRTHDAY = 'user_birthday';
 	const SCOPE_USER_HOMETOWN = 'user_hometown';
 	const SCOPE_USER_LOCATION = 'user_location';
-	const SCOPE_USER_PHOTOS = 'user_photos';
+	const SCOPE_USER_PHOTOS   = 'user_photos';
+    const API_VERSION         = 'v5.0';
 
-	protected $name = 'facebook';
+	protected $name  = 'facebook';
 	protected $title = 'Facebook';
-	protected $type = 'OAuth2';
+	protected $type  = 'OAuth2';
 	protected $jsArguments = ['popup' => ['width' => 585, 'height' => 290]];
 
-	protected $scopes = [];
+	//protected $scopes = [];
 	protected $providerOptions = [
 		'authorize' => 'https://www.facebook.com/dialog/oauth',
 		'access_token' => 'https://graph.facebook.com/oauth/access_token',
 	];
-	protected $baseApiUrl = 'https://graph.facebook.com/v2.8/';
 
-	protected function fetchAttributes()
+	protected $baseApiUrl = 'https://graph.facebook.com/' . self::API_VERSION . '/';
+
+    protected $response;
+
+	protected function fetchAttributes() : bool
 	{
-		$info = $this->makeSignedRequest('me', [
+		$this->response = $this->makeSignedRequest('me', [
             'query' => [
-                'fields' => join(',', [
+                'fields' => implode(',', [
                     'id',
                     'name',
                     'link'
@@ -55,9 +59,9 @@ class FacebookOAuth2Service extends Service
             ]
         ]);
 
-		$this->attributes['id'] = $info['id'];
-		$this->attributes['name'] = $info['name'];
-		$this->attributes['url'] = $info['link'];
+		$this->attributes['id']   = $this->response['id'];
+		$this->attributes['name'] = $this->response['name'];
+		$this->attributes['url']  = $this->response['link'];
 
 		return true;
 	}
