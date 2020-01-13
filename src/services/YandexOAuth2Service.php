@@ -34,16 +34,22 @@ class YandexOAuth2Service extends Service
 		'access_token' => 'https://oauth.yandex.ru/token',
 	];
 
-	protected function fetchAttributes()
-	{
-		$info = $this->makeSignedRequest('https://login.yandex.ru/info');
+    protected $response;
 
-		$this->attributes['id'] = $info['id'];
-		$this->attributes['name'] = $info['real_name'];
-		//$this->attributes['login'] = $info['display_name'];
-		//$this->attributes['email'] = $info['emails'][0];
-		//$this->attributes['email'] = $info['default_email'];
-		$this->attributes['gender'] = ($info['sex'] == 'male') ? 'M' : 'F';
+    /**
+     * @return bool
+     * @throws \yareg\eauth\ErrorException
+     */
+	protected function fetchAttributes() : bool
+	{
+        $response = $this->makeSignedRequest('https://login.yandex.ru/info');
+
+		$this->attributes['id']      = $response['id'];
+		$this->attributes['name']    = $response['real_name'];
+		//$this->attributes['login'] = $response['display_name'];
+		//$this->attributes['email'] = $response['emails'][0];
+		$this->attributes['email']   = $response['default_email'];
+		$this->attributes['gender']  = ($response['sex'] === 'male') ? 'M' : 'F';
 
 		return true;
 	}
