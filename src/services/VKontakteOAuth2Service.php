@@ -63,9 +63,11 @@ class VKontakteOAuth2Service extends Service
 
         $this->response = $data['response'][0];
 
-        $this->attributes['id']   = $this->response['id'];
-        $this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
-        $this->attributes['url']  = 'https://vk.com/id' . $this->response['id'];
+        $this->attributes['id']    = $this->response['id'];
+        $this->attributes['name']  = $this->response['first_name'] . ' ' . $this->response['last_name'];
+        $this->attributes['url']   = 'https://vk.com/id' . $this->response['id'];
+        $this->attributes['email'] = $tokenData['params']['email'] ?? '';
+
 
         /*if (!empty($info['nickname']))
             $this->attributes['username'] = $info['nickname'];
