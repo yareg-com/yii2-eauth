@@ -42,14 +42,14 @@ class YandexOAuth2Service extends Service
      */
 	protected function fetchAttributes() : bool
 	{
-        $response = $this->makeSignedRequest('https://login.yandex.ru/info');
+        $this->response = $this->makeSignedRequest('https://login.yandex.ru/info');
 
-		$this->attributes['id']      = $response['id'];
-		$this->attributes['name']    = $response['real_name'];
-		//$this->attributes['login'] = $response['display_name'];
-		//$this->attributes['email'] = $response['emails'][0];
-		$this->attributes['email']   = $response['default_email'];
-		$this->attributes['gender']  = ($response['sex'] === 'male') ? 'M' : 'F';
+		$this->attributes['id']      = $this->response['id'] ?? '';
+		$this->attributes['name']    = $this->response['real_name'] ?? '';
+		//$this->attributes['login'] = $this->response['display_name'];
+		//$this->attributes['email'] = $this->response['emails'][0];
+		$this->attributes['email']   = $this->response['default_email'] ?? '';
+		$this->attributes['gender']  = ($this->response['sex'] === 'male') ? 'M' : 'F';
 
 		return true;
 	}
