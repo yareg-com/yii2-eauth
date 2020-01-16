@@ -33,11 +33,17 @@ class MailruOAuth2Service extends Service
 	];
 	protected $baseApiUrl = 'http://www.appsmail.ru/platform/api';
 
-	protected function fetchAttributes()
+    protected $response;
+
+    /**
+     * @return bool
+     * @throws \ErrorException
+     */
+	protected function fetchAttributes() : bool
 	{
 		$tokenData = $this->getAccessTokenData();
 
-		$info = $this->makeSignedRequest('/', [
+		$data = $this->makeSignedRequest('/', [
 			'query' => [
 				'uids' => $tokenData['params']['x_mailru_vid'],
 				'method' => 'users.getInfo',
@@ -45,11 +51,11 @@ class MailruOAuth2Service extends Service
 			],
 		]);
 
-		$info = $info[0];
+        $this->response = $data[0];
 
-		$this->attributes['id'] = $info['uid'];
-		$this->attributes['name'] = $info['first_name'] . ' ' . $info['last_name'];
-		$this->attributes['url'] = $info['link'];
+		$this->attributes['id']   = $this->response['uid'];
+		$this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
+		$this->attributes['url']  = $this->response['link'];
 
 		return true;
 	}
@@ -60,6 +66,7 @@ class MailruOAuth2Service extends Service
 	 * @param string $url url to request.
 	 * @param array $options HTTP request options. Keys: query, data, referer.
 	 * @param boolean $parseResponse Whether to parse response.
+     * @throws \ErrorException
 	 * @return mixed the response.
 	 */
 	public function makeSignedRequest($url, $options = [], $parseResponse = true)
@@ -91,8 +98,8 @@ class MailruOAuth2Service extends Service
 				'code' => $response['error']['error_code'],
 				'message' => $response['error']['error_msg'],
 			];
-		} else {
-			return null;
 		}
+
+		return null;
 	}
 }
