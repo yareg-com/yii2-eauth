@@ -44,9 +44,14 @@ class OdnoklassnikiOAuth2Service extends Service
 	protected $tokenDefaultLifetime = 1500; // about 25 minutes
 	protected $validateState = false;
 
-	protected function fetchAttributes()
+    protected $response;
+
+    /**
+     * @return bool
+     */
+	protected function fetchAttributes() : bool
 	{
-	        $info = $this->makeSignedRequest('', [
+        $this->response = $this->makeSignedRequest('', [
 			'query' => [
 				'method' => 'users.getCurrentUser',
 				'format' => 'JSON',
@@ -55,8 +60,8 @@ class OdnoklassnikiOAuth2Service extends Service
 			],
 		]);
 
-		$this->attributes['id'] = $info['uid'];
-		$this->attributes['name'] = $info['first_name'] . ' ' . $info['last_name'];
+		$this->attributes['id']   = $this->response['uid'];
+		$this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
 
 		return true;
 	}
@@ -64,7 +69,7 @@ class OdnoklassnikiOAuth2Service extends Service
 	/**
 	 * @return string
 	 */
-	public function getClientPublic()
+	public function getClientPublic() : string
 	{
 		return $this->clientPublic;
 	}
@@ -83,6 +88,7 @@ class OdnoklassnikiOAuth2Service extends Service
 	 * @param string $url url to request.
 	 * @param array $options HTTP request options. Keys: query, data, referer.
 	 * @param boolean $parseResponse Whether to parse response.
+     * @throws \ErrorException
 	 * @return mixed the response.
 	 */
 	public function makeSignedRequest($url, $options = [], $parseResponse = true)
@@ -113,9 +119,9 @@ class OdnoklassnikiOAuth2Service extends Service
 				'code' => $response['error_code'],
 				'message' => $response['error_msg'],
 			];
-		} else {
-			return null;
 		}
+
+		return null;
 	}
 
 }
