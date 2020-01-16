@@ -33,7 +33,7 @@ class OdnoklassnikiOAuth2Service extends Service
 	protected $jsArguments = ['popup' => ['width' => 680, 'height' => 500]];
 
 	protected $clientPublic;
-	//protected $scopes = [];
+	//protected $scopes = [ 'GET_EMAIL' ]; // email access is granted by support (WTF?) api-support@ok.ru
 	protected $scopeSeparator = ';';
 	protected $providerOptions = [
             'authorize'    => 'https://connect.ok.ru/oauth/authorize',
