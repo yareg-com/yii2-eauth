@@ -22,24 +22,27 @@ use yareg\eauth\oauth2\Service;
  */
 class OdnoklassnikiOAuth2Service extends Service
 {
-
 	const SCOPE_VALUABLE_ACCESS = 'VALUABLE ACCESS';
-	const SCOPE_SET_STATUS = 'SET STATUS';
-	const SCOPE_PHOTO_CONTENT = 'PHOTO CONTENT';
+	const SCOPE_SET_STATUS      = 'SET STATUS';
+	const SCOPE_PHOTO_CONTENT   = 'PHOTO CONTENT';
+	const SCOPE_EMAIL           = 'GET_EMAIL'; // email access is granted by support (WTF?) api-support@ok.ru
 
-	protected $name = 'ok';
+	protected $name  = 'ok';
 	protected $title = 'Odnoklassniki';
-	protected $type = 'OAuth2';
+	protected $type  = 'OAuth2';
 	protected $jsArguments = ['popup' => ['width' => 680, 'height' => 500]];
 
 	protected $clientPublic;
-	//protected $scopes = [ 'GET_EMAIL' ]; // email access is granted by support (WTF?) api-support@ok.ru
-	protected $scopeSeparator = ';';
+
+	//protected $scopes = [];
+
+    protected $scopeSeparator = ';';
 	protected $providerOptions = [
             'authorize'    => 'https://connect.ok.ru/oauth/authorize',
             'access_token' => 'https://api.ok.ru/oauth/token.do',
         ];
-        protected $baseApiUrl = 'https://api.ok.ru/api/';
+
+    protected $baseApiUrl = 'https://api.ok.ru/fb.do';
 
 	protected $tokenDefaultLifetime = 1500; // about 25 minutes
 	protected $validateState = false;
@@ -54,10 +57,10 @@ class OdnoklassnikiOAuth2Service extends Service
 	{
         $this->response = $this->makeSignedRequest('', [
 			'query' => [
-				'method' => 'users/getCurrentUser',
-				'format' => 'JSON',
+				'method'          => 'users.getCurrentUser',
+				'format'          => 'json',
 				'application_key' => $this->clientPublic,
-				'client_id' => $this->clientId,
+				'client_id'       => $this->clientId,
 			],
 		]);
 
