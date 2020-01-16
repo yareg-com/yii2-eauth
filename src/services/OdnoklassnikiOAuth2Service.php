@@ -48,6 +48,7 @@ class OdnoklassnikiOAuth2Service extends Service
 
     /**
      * @return bool
+     * @throws \ErrorException
      */
 	protected function fetchAttributes() : bool
 	{
