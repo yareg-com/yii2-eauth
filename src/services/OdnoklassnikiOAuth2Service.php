@@ -54,7 +54,7 @@ class OdnoklassnikiOAuth2Service extends Service
 	{
         $this->response = $this->makeSignedRequest('', [
 			'query' => [
-				'method' => 'users.getCurrentUser',
+				'method' => 'users/getCurrentUser',
 				'format' => 'JSON',
 				'application_key' => $this->clientPublic,
 				'client_id' => $this->clientId,
