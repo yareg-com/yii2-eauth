@@ -27,7 +27,7 @@ class OdnoklassnikiOAuth2Service extends Service
 	const SCOPE_SET_STATUS = 'SET STATUS';
 	const SCOPE_PHOTO_CONTENT = 'PHOTO CONTENT';
 
-	protected $name = 'odnoklassniki';
+	protected $name = 'ok';
 	protected $title = 'Odnoklassniki';
 	protected $type = 'OAuth2';
 	protected $jsArguments = ['popup' => ['width' => 680, 'height' => 500]];
