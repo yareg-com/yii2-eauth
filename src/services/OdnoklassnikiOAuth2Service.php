@@ -48,6 +48,7 @@ class OdnoklassnikiOAuth2Service extends Service
 	protected $validateState = false;
 
     protected $response;
+    protected $fields;
 
     /**
      * @return bool
@@ -57,11 +58,12 @@ class OdnoklassnikiOAuth2Service extends Service
 	{
         $this->response = $this->makeSignedRequest('', [
 			'query' => [
+			    'fields'          => $this->fields,
 				'method'          => 'users.getCurrentUser',
 				'format'          => 'json',
 				'application_key' => $this->clientPublic,
-				'client_id'       => $this->clientId,
-			],
+				'client_id'       => $this->clientId
+            ],
 		]);
 
 		$this->attributes['id']   = $this->response['uid'];
