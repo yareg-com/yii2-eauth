@@ -23,9 +23,9 @@ use yareg\eauth\oauth1\Service;
 class TwitterOAuth1Service extends Service
 {
 
-	protected $name = 'twitter';
+	protected $name  = 'twitter';
 	protected $title = 'Twitter';
-	protected $type = 'OAuth1';
+	protected $type  = 'OAuth1';
 	protected $jsArguments = ['popup' => ['width' => 900, 'height' => 550]];
 
 	protected $providerOptions = [
@@ -36,16 +36,19 @@ class TwitterOAuth1Service extends Service
 	protected $baseApiUrl = 'https://api.twitter.com/1.1/';
 	protected $tokenDefaultLifetime = TokenInterface::EOL_NEVER_EXPIRES;
 
+	protected $response;
+
 	/**
+     * @throws \yareg\eauth\ErrorException
 	 * @return bool
 	 */
-	protected function fetchAttributes()
+	protected function fetchAttributes() : bool
 	{
-		$info = $this->makeSignedRequest('account/verify_credentials.json');
+		$this->response = $this->makeSignedRequest('account/verify_credentials.json');
 
-		$this->attributes['id'] = $info['id'];
-		$this->attributes['name'] = $info['name'];
-		$this->attributes['url'] = 'http://twitter.com/account/redirect_by_id?id=' . $info['id_str'];
+		$this->attributes['id']   = $this->response['id'];
+		$this->attributes['name'] = $this->response['name'];
+		$this->attributes['url']  = 'http://twitter.com/account/redirect_by_id?id=' . $this->response['id_str'];
 
 		/*$this->attributes['username'] = $info['screen_name'];
 		$this->attributes['language'] = $info['lang'];
@@ -57,7 +60,7 @@ class TwitterOAuth1Service extends Service
 
 	/**
 	 * Authenticate the user.
-	 *
+	 * @throws \yareg\eauth\ErrorException
 	 * @return boolean whether user was successfuly authenticated.
 	 */
 	public function authenticate()
