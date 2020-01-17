@@ -45,17 +45,18 @@ class FacebookOAuth2Service extends Service
 
 	protected $baseApiUrl = 'https://graph.facebook.com/' . self::API_VERSION . '/';
 
+	protected $fields = 'id,name,link';
     protected $response;
 
+    /**
+     * @return bool
+     * @throws \ErrorException
+     */
 	protected function fetchAttributes() : bool
 	{
 		$this->response = $this->makeSignedRequest('me', [
             'query' => [
-                'fields' => implode(',', [
-                    'id',
-                    'name',
-                    'link'
-                ])
+                'fields' => $this->fields
             ]
         ]);
 
