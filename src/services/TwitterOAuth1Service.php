@@ -46,9 +46,9 @@ class TwitterOAuth1Service extends Service
 	{
 		$this->response = $this->makeSignedRequest('account/verify_credentials.json');
 
-		$this->attributes['id']   = $this->response['id'];
-		$this->attributes['name'] = $this->response['name'];
-		$this->attributes['url']  = 'https://twitter.com/' . $this->response['screen_name'];
+		$this->attributes['id']   = $this->response['id'] ?? '';
+		$this->attributes['name'] = $this->response['name'] ?? '';
+		$this->attributes['url']  = isset($this->response['screen_name']) ? 'https://twitter.com/' . $this->response['screen_name'] : '';
 
 		/*$this->attributes['username'] = $info['screen_name'];
 		$this->attributes['language'] = $info['lang'];
