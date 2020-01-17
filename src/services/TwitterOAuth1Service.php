@@ -48,7 +48,7 @@ class TwitterOAuth1Service extends Service
 
 		$this->attributes['id']   = $this->response['id'];
 		$this->attributes['name'] = $this->response['name'];
-		$this->attributes['url']  = 'http://twitter.com/account/redirect_by_id?id=' . $this->response['id_str'];
+		$this->attributes['url']  = 'https://twitter.com/account/redirect_by_id?id=' . $this->response['id_str'];
 
 		/*$this->attributes['username'] = $info['screen_name'];
 		$this->attributes['language'] = $info['lang'];
