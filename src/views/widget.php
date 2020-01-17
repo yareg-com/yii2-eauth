@@ -27,7 +27,7 @@ if ($popup) {
 		<?php
 		foreach ($services as $name => $service) {
 			echo '<li class="eauth-service eauth-service-id-' . $service->id . '">';
-			echo Html::a($service->title, [$action, 'service' => $name], [
+			echo Html::a($service->title, [$action . '/' . $name], [
 				'class' => 'eauth-service-link',
 				'data-eauth-service' => $service->id,
 			]);
