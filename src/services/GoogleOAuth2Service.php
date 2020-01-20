@@ -135,6 +135,8 @@ class GoogleOAuth2Service extends Service
 		$info['family_name']; // last name
 		$info['birthday']; // format: 0000-00-00
 		$info['locale']; // format: en*/
+
+		return true;
 	}
 
 	/**
