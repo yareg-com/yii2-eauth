@@ -31,9 +31,9 @@ class GoogleOAuth2Service extends Service
 	const SCOPE_EMAIL = 'email';
 	const SCOPE_PROFILE = 'profile';
 
-	const SCOPE_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email';
+	const SCOPE_USERINFO_EMAIL   = 'https://www.googleapis.com/auth/userinfo.email';
 	const SCOPE_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile';
-	const SCOPE_USERINFO_BIRTHDAY = 'https://www.googleapis.com/auth/user.birthday.read';
+	const SCOPE_USER_BIRTHDAY    = 'https://www.googleapis.com/auth/user.birthday.read';
 
 	// Google+
 /*	const SCOPE_GPLUS_ME = 'https://www.googleapis.com/auth/plus.me';
