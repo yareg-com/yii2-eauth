@@ -11,6 +11,7 @@
 
 namespace yareg\eauth\services;
 
+use yareg\eauth\ErrorException;
 use yareg\eauth\oauth2\Service;
 
 /**
@@ -34,11 +35,11 @@ class GoogleOAuth2Service extends Service
 	const SCOPE_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile';
 
 	// Google+
-	const SCOPE_GPLUS_ME = 'https://www.googleapis.com/auth/plus.me';
-	const SCOPE_GPLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login';
+/*	const SCOPE_GPLUS_ME = 'https://www.googleapis.com/auth/plus.me';
+	const SCOPE_GPLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login';*/
 
 	// Google Drive
-	const SCOPE_DOCUMENTSLIST = 'https://docs.google.com/feeds/';
+/*	const SCOPE_DOCUMENTSLIST = 'https://docs.google.com/feeds/';
 	const SCOPE_SPREADSHEETS = 'https://spreadsheets.google.com/feeds/';
 	const SCOPE_GOOGLEDRIVE = 'https://www.googleapis.com/auth/drive';
 	const SCOPE_DRIVE_APPS = 'https://www.googleapis.com/auth/drive.appdata';
@@ -46,21 +47,21 @@ class GoogleOAuth2Service extends Service
 	const SCOPE_GOOGLEDRIVE_FILES = 'https://www.googleapis.com/auth/drive.file';
 	const SCOPE_DRIVE_METADATA_READ_ONLY = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 	const SCOPE_DRIVE_READ_ONLY = 'https://www.googleapis.com/auth/drive.readonly';
-	const SCOPE_DRIVE_SCRIPTS = 'https://www.googleapis.com/auth/drive.scripts';
+	const SCOPE_DRIVE_SCRIPTS = 'https://www.googleapis.com/auth/drive.scripts';*/
 
 	// Adwords
-	const SCOPE_ADSENSE = 'https://www.googleapis.com/auth/adsense';
+/*	const SCOPE_ADSENSE = 'https://www.googleapis.com/auth/adsense';
 	const SCOPE_ADWORDS = 'https://adwords.google.com/api/adwords/';
-	const SCOPE_GAN = 'https://www.googleapis.com/auth/gan'; // google affiliate network...?
+	const SCOPE_GAN = 'https://www.googleapis.com/auth/gan'; // google affiliate network...?*/
 
 	// Google Analytics
-	const SCOPE_ANALYTICS = 'https://www.googleapis.com/auth/analytics';
+/*	const SCOPE_ANALYTICS = 'https://www.googleapis.com/auth/analytics';
 	const SCOPE_ANALYTICS_EDIT = 'https://www.googleapis.com/auth/analytics.edit';
 	const SCOPE_ANALYTICS_MANAGE_USERS = 'https://www.googleapis.com/auth/analytics.manage.users';
-	const SCOPE_ANALYTICS_READ_ONLY = 'https://www.googleapis.com/auth/analytics.readonly';
+	const SCOPE_ANALYTICS_READ_ONLY = 'https://www.googleapis.com/auth/analytics.readonly';*/
 
 	// Other services
-	const SCOPE_BOOKS = 'https://www.googleapis.com/auth/books';
+/*	const SCOPE_BOOKS = 'https://www.googleapis.com/auth/books';
 	const SCOPE_BLOGGER = 'https://www.googleapis.com/auth/blogger';
 	const SCOPE_CALENDAR = 'https://www.googleapis.com/auth/calendar';
 	const SCOPE_CONTACT = 'https://www.google.com/m8/feeds/';
@@ -70,56 +71,59 @@ class GoogleOAuth2Service extends Service
 	const SCOPE_SITES = 'https://sites.google.com/feeds/';
 	const SCOPE_URLSHORTENER = 'https://www.googleapis.com/auth/urlshortener';
 	const SCOPE_WEBMASTERTOOLS = 'https://www.google.com/webmasters/tools/feeds/';
-	const SCOPE_TASKS = 'https://www.googleapis.com/auth/tasks';
+	const SCOPE_TASKS = 'https://www.googleapis.com/auth/tasks';*/
 
 	// Cloud services
-	const SCOPE_CLOUDSTORAGE = 'https://www.googleapis.com/auth/devstorage.read_write';
+/*	const SCOPE_CLOUDSTORAGE = 'https://www.googleapis.com/auth/devstorage.read_write';
 	const SCOPE_CONTENTFORSHOPPING = 'https://www.googleapis.com/auth/structuredcontent'; // what even is this
 	const SCOPE_USER_PROVISIONING = 'https://apps-apis.google.com/a/feeds/user/';
 	const SCOPE_GROUPS_PROVISIONING = 'https://apps-apis.google.com/a/feeds/groups/';
-	const SCOPE_NICKNAME_PROVISIONING = 'https://apps-apis.google.com/a/feeds/alias/';
+	const SCOPE_NICKNAME_PROVISIONING = 'https://apps-apis.google.com/a/feeds/alias/';*/
 
 	// Old
-	const SCOPE_ORKUT = 'https://www.googleapis.com/auth/orkut';
+/*	const SCOPE_ORKUT = 'https://www.googleapis.com/auth/orkut';
 	const SCOPE_GOOGLELATITUDE =
 		'https://www.googleapis.com/auth/latitude.all.best https://www.googleapis.com/auth/latitude.all.city';
-	const SCOPE_OPENID = 'openid';
+	const SCOPE_OPENID = 'openid';*/
 
 	// YouTube
-	const SCOPE_YOUTUBE_GDATA = 'https://gdata.youtube.com';
+/*	const SCOPE_YOUTUBE_GDATA = 'https://gdata.youtube.com';
 	const SCOPE_YOUTUBE_ANALYTICS_MONETARY = 'https://www.googleapis.com/auth/yt-analytics-monetary.readonly';
 	const SCOPE_YOUTUBE_ANALYTICS = 'https://www.googleapis.com/auth/yt-analytics.readonly';
 	const SCOPE_YOUTUBE = 'https://www.googleapis.com/auth/youtube';
 	const SCOPE_YOUTUBE_READ_ONLY = 'https://www.googleapis.com/auth/youtube.readonly';
 	const SCOPE_YOUTUBE_UPLOAD = 'https://www.googleapis.com/auth/youtube.upload';
-	const SCOPE_YOUTUBE_PATNER = 'https://www.googleapis.com/auth/youtubepartner';
-	const SCOPE_YOUTUBE_PARTNER_EDIT = 'https://www.googleapis.com/auth/youtubepartner-channel-edit';
+	const SCOPE_YOUTUBE_PARTNER = 'https://www.googleapis.com/auth/youtubepartner';
+	const SCOPE_YOUTUBE_PARTNER_EDIT = 'https://www.googleapis.com/auth/youtubepartner-channel-edit';*/
 
 	// Google Glass
-	const SCOPE_GLASS_TIMELINE = 'https://www.googleapis.com/auth/glass.timeline';
-	const SCOPE_GLASS_LOCATION = 'https://www.googleapis.com/auth/glass.location';
+/*	const SCOPE_GLASS_TIMELINE = 'https://www.googleapis.com/auth/glass.timeline';
+	const SCOPE_GLASS_LOCATION = 'https://www.googleapis.com/auth/glass.location';*/
 
 	protected $name = 'google_oauth';
 	protected $title = 'Google';
 	protected $type = 'OAuth2';
 	protected $jsArguments = ['popup' => ['width' => 500, 'height' => 450]];
 
-	protected $scopes = [self::SCOPE_USERINFO_PROFILE];
+	protected $scopes = [self::SCOPE_USERINFO_PROFILE, self::SCOPE_USERINFO_EMAIL];
 	protected $providerOptions = [
 		'authorize' => 'https://accounts.google.com/o/oauth2/auth',
 		'access_token' => 'https://accounts.google.com/o/oauth2/token',
 	];
 
-	protected function fetchAttributes()
+	protected $response;
+
+    /**
+     * @throws \yareg\eauth\ErrorException
+     * @return bool
+     */
+	protected function fetchAttributes() : bool
 	{
-		$info = $this->makeSignedRequest('https://www.googleapis.com/oauth2/v1/userinfo');
+		$this->response = $this->makeSignedRequest('https://www.googleapis.com/oauth2/v1/userinfo');
 
-		$this->attributes['id'] = $info['id'];
-		$this->attributes['name'] = $info['name'];
-
-		if (!empty($info['link'])) {
-			$this->attributes['url'] = $info['link'];
-		}
+		$this->attributes['id']   = $this->response['id'] ?? '';
+		$this->attributes['name'] = $this->response['name'] ?? '';
+        $this->attributes['url']  = $this->response['link'] ?? '';
 
 		/*if (!empty($info['gender']))
 			$this->attributes['gender'] = $info['gender'] == 'male' ? 'M' : 'F';
@@ -139,6 +143,7 @@ class GoogleOAuth2Service extends Service
 	 * @param string $url url to request.
 	 * @param array $options HTTP request options. Keys: query, data, referer.
 	 * @param boolean $parseResponse Whether to parse response.
+     * @throws ErrorException
 	 * @return mixed the response.
 	 */
 	public function makeSignedRequest($url, $options = [], $parseResponse = true)
@@ -162,8 +167,8 @@ class GoogleOAuth2Service extends Service
 				'code' => $response['error']['code'],
 				'message' => $response['error']['message'],
 			];
-		} else {
-			return null;
 		}
+
+		return null;
 	}
 }
