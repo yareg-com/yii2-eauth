@@ -33,6 +33,7 @@ class GoogleOAuth2Service extends Service
 
 	const SCOPE_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email';
 	const SCOPE_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile';
+	const SCOPE_USERINFO_BIRTHDAY = 'https://www.googleapis.com/auth/user.birthday.read';
 
 	// Google+
 /*	const SCOPE_GPLUS_ME = 'https://www.googleapis.com/auth/plus.me';
@@ -123,7 +124,7 @@ class GoogleOAuth2Service extends Service
 
 		$this->attributes['id']   = $this->response['id'] ?? '';
 		$this->attributes['name'] = $this->response['name'] ?? '';
-        $this->attributes['url']  = $this->response['link'] ?? '';
+        $this->attributes['url']  = $this->response['profile'] ?? '';
 
 		/*if (!empty($info['gender']))
 			$this->attributes['gender'] = $info['gender'] == 'male' ? 'M' : 'F';
