@@ -11,6 +11,7 @@
 namespace yareg\eauth\oauth2;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\Url;
 use OAuth\Common\Exception\Exception as OAuthException;
 use OAuth\Common\Http\Uri\Uri;
@@ -171,22 +172,25 @@ abstract class Service extends ServiceBase implements IAuthService
 	}
 
 	/**
+     * @throws InvalidConfigException
 	 * @return string the current url
 	 */
-	protected function getCallbackUrl()
+	protected function getCallbackUrl() : string
 	{
 		if (isset($_GET['redirect_uri'])) {
 			$url = $_GET['redirect_uri'];
 		} else {
-			$route = Yii::$app->getRequest()->getQueryParams();
-			array_unshift($route, '');
+			//$route = Yii::$app->getRequest()->getQueryParams();
+			$route = Yii::$app->getRequest()->getPathInfo();
+
+/*			array_unshift($route, '');
 
 			// Can not use these params in OAuth2 callbacks
 			foreach (['code', 'state', 'redirect_uri', 'scope'] as $param) {
 				if (isset($route[$param])) {
 					unset($route[$param]);
 				}
-			}
+			}*/
 
 			$url = Url::to($route, true);
 		}
@@ -197,7 +201,7 @@ abstract class Service extends ServiceBase implements IAuthService
 	/**
 	 * Authenticate the user.
 	 *
-	 * @return boolean whether user was successfuly authenticated.
+	 * @return boolean whether user was successfully authenticated.
 	 * @throws ErrorException
 	 */
 	public function authenticate()
