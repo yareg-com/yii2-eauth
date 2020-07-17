@@ -1,0 +1,11 @@
+yareg_yii2_eauth:
+  image: yiisoftware/yii2-php:7.4-fpm
+  container_name: yareg_yii2_eauth
+  volumes:
+    # Re-use local composer cache via host-volume
+    - ~/.composer-docker/cache:/root/.composer/cache:delegated
+    # Mount composer auth file
+    #- ./docker/composer-auth.json:/root/.composer/auth.json:ro
+    # Mount source-code for development
+    - ./:/app
+  restart: unless-stopped
