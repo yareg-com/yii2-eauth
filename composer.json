@@ -32,11 +32,12 @@
 	},
 	"require": {
 		"php": ">=7.0.0",
+		"ext-json": "*",
 		"lib-curl": "*",
 		"yiisoft/yii2": "~2.0.13",
 		"lusitanian/oauth": "~0.3.0",
 		"nodge/lightopenid": "~1.1.0"
-	},
+    },
 	"extra": {
 		"bootstrap": "yareg\\eauth\\Bootstrap"
 	},
