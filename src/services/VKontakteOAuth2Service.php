@@ -23,7 +23,7 @@ class VKontakteOAuth2Service extends Service
 {
 	const SCOPE_EMAIL   = 'email';
 	const SCOPE_FRIENDS = 'friends';
-	const API_VERSION   = '5.103';
+	const API_VERSION   = '5.120';
 
 	protected $name        = 'vkontakte';
 	protected $title       = 'VK.com';
