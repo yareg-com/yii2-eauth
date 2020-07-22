@@ -27,7 +27,7 @@ class OdnoklassnikiOAuth2Service extends Service
 	const SCOPE_PHOTO_CONTENT   = 'PHOTO CONTENT';
 	const SCOPE_EMAIL           = 'GET_EMAIL'; // email access is granted by support (WTF?) api-support@ok.ru
 
-	protected $name  = 'ok';
+	protected $name  = 'odnoklassniki';
 	protected $title = 'Odnoklassniki';
 	protected $type  = 'OAuth2';
 	protected $jsArguments = ['popup' => ['width' => 680, 'height' => 500]];
