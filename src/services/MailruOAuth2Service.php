@@ -55,7 +55,7 @@ class MailruOAuth2Service extends Service
 
 		$this->attributes['id']   = $this->response['uid'];
 		$this->attributes['name'] = $this->response['first_name'] . ' ' . $this->response['last_name'];
-		$this->attributes['url']  = $this->response['link'];
+		$this->attributes['url']  = $this->response['link'] ?? '';
 
 		return true;
 	}
