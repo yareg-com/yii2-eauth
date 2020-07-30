@@ -30,7 +30,7 @@ class FacebookOAuth2Service extends Service
 	const SCOPE_USER_HOMETOWN = 'user_hometown';
 	const SCOPE_USER_LOCATION = 'user_location';
 	const SCOPE_USER_PHOTOS   = 'user_photos';
-    const API_VERSION         = 'v5.0';
+    const API_VERSION         = 'v7.0';
 
 	protected $name  = 'facebook';
 	protected $title = 'Facebook';
@@ -62,7 +62,7 @@ class FacebookOAuth2Service extends Service
 
 		$this->attributes['id']   = $this->response['id'];
 		$this->attributes['name'] = $this->response['name'];
-		$this->attributes['url']  = $this->response['link'];
+		$this->attributes['url']  = $this->response['link'] ?? null;
 
 		return true;
 	}
