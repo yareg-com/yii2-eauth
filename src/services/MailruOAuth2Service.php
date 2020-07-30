@@ -2,7 +2,7 @@
 /**
  * MailruOAuth2Service class file.
  *
- * Register application: http://api.mail.ru/sites/my/add
+ * Register application: https://api.mail.ru/sites/my
  *
  * @author Maxim Zemskov <nodge@yandex.ru>
  * @link http://github.com/Nodge/yii2-eauth/
