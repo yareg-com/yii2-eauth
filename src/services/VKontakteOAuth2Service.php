@@ -11,6 +11,7 @@
 
 namespace yareg\eauth\services;
 
+use yareg\eauth\ErrorException;
 use yareg\eauth\oauth2\Service;
 use OAuth\OAuth2\Service\ServiceInterface;
 
@@ -44,7 +45,7 @@ class VKontakteOAuth2Service extends Service
 
     /**
      * @return bool
-     * @throws \yareg\eauth\ErrorException
+     * @throws ErrorException
      */
 	protected function fetchAttributes() : bool
 	{

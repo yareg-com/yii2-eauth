@@ -115,7 +115,7 @@ class GoogleOAuth2Service extends Service
 	protected $response;
 
     /**
-     * @throws \yareg\eauth\ErrorException
+     * @throws ErrorException
      * @return bool
      */
 	protected function fetchAttributes() : bool

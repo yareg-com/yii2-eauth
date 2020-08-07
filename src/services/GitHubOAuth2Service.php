@@ -73,7 +73,7 @@ class GitHubOAuth2Service extends Service
 	 *
 	 * @return array
 	 */
-	public function getExtraApiHeaders()
+	public function getExtraApiHeaders() : array
 	{
 		return ['Accept' => 'application/vnd.github.beta+json'];
 	}

@@ -12,6 +12,7 @@
 namespace yareg\eauth\services;
 
 use OAuth\Common\Token\TokenInterface;
+use yareg\eauth\ErrorException;
 use yareg\eauth\oauth2\Service;
 
 /**
@@ -38,7 +39,7 @@ class YandexOAuth2Service extends Service
 
     /**
      * @return bool
-     * @throws \yareg\eauth\ErrorException
+     * @throws ErrorException
      */
 	protected function fetchAttributes() : bool
 	{
@@ -51,5 +52,4 @@ class YandexOAuth2Service extends Service
 
 		return true;
 	}
-
 }

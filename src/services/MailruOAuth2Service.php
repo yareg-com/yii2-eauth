@@ -11,6 +11,7 @@
 
 namespace yareg\eauth\services;
 
+use yareg\eauth\ErrorException;
 use yareg\eauth\oauth2\Service;
 
 /**
@@ -37,7 +38,7 @@ class MailruOAuth2Service extends Service
 
     /**
      * @return bool
-     * @throws \ErrorException
+     * @throws ErrorException
      */
 	protected function fetchAttributes() : bool
 	{
@@ -66,7 +67,7 @@ class MailruOAuth2Service extends Service
 	 * @param string $url url to request.
 	 * @param array $options HTTP request options. Keys: query, data, referer.
 	 * @param boolean $parseResponse Whether to parse response.
-     * @throws \ErrorException
+     * @throws ErrorException
 	 * @return mixed the response.
 	 */
 	public function makeSignedRequest($url, $options = [], $parseResponse = true)

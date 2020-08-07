@@ -12,8 +12,8 @@
 namespace yareg\eauth\services;
 
 use OAuth\OAuth1\Token\TokenInterface;
+use yareg\eauth\ErrorException;
 use yareg\eauth\oauth1\Service;
-
 
 /**
  * Twitter provider class.
@@ -39,7 +39,7 @@ class TwitterOAuth1Service extends Service
 	protected $response;
 
 	/**
-     * @throws \yareg\eauth\ErrorException
+     * @throws ErrorException
 	 * @return bool
 	 */
 	protected function fetchAttributes() : bool
@@ -60,8 +60,8 @@ class TwitterOAuth1Service extends Service
 
 	/**
 	 * Authenticate the user.
-	 * @throws \yareg\eauth\ErrorException
-	 * @return boolean whether user was successfuly authenticated.
+	 * @throws ErrorException
+	 * @return boolean whether user was successfully authenticated.
 	 */
 	public function authenticate()
 	{
