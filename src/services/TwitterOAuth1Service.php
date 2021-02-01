@@ -46,9 +46,9 @@ class TwitterOAuth1Service extends Service
 	{
 		$this->response = $this->makeSignedRequest('account/verify_credentials.json', [
             'query' => [
-                'include_entities' => false,
-                'skip_status' => true,
-                'include_email' => true,
+                'include_entities' => 'false',
+                'skip_status' => 'true',
+                'include_email' => 'true',
             ],
         ]);
 
