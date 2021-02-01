@@ -57,6 +57,9 @@ class TwitterOAuth1Service extends Service
 		$this->attributes['url']   = isset($this->response['screen_name']) ? 'https://twitter.com/' . $this->response['screen_name'] : '';
         $this->attributes['email'] = $this->response['email'] ?? '';
 
+        var_dump($this->response);
+        die();
+
 		/*$this->attributes['username'] = $info['screen_name'];
 		$this->attributes['language'] = $info['lang'];
 		$this->attributes['timezone'] = timezone_name_from_abbr('', $info['utc_offset'], date('I'));
