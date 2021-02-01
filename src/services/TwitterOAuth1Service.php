@@ -44,11 +44,18 @@ class TwitterOAuth1Service extends Service
 	 */
 	protected function fetchAttributes() : bool
 	{
-		$this->response = $this->makeSignedRequest('account/verify_credentials.json');
+		$this->response = $this->makeSignedRequest('account/verify_credentials.json', [
+            'query' => [
+                'include_entities' => false,
+                'skip_status' => true,
+                'include_email' => true,
+            ],
+        ]);
 
-		$this->attributes['id']   = $this->response['id'] ?? '';
-		$this->attributes['name'] = $this->response['name'] ?? '';
-		$this->attributes['url']  = isset($this->response['screen_name']) ? 'https://twitter.com/' . $this->response['screen_name'] : '';
+		$this->attributes['id']    = $this->response['id'] ?? '';
+		$this->attributes['name']  = $this->response['name'] ?? '';
+		$this->attributes['url']   = isset($this->response['screen_name']) ? 'https://twitter.com/' . $this->response['screen_name'] : '';
+        $this->attributes['email'] = $this->response['email'] ?? '';
 
 		/*$this->attributes['username'] = $info['screen_name'];
 		$this->attributes['language'] = $info['lang'];
