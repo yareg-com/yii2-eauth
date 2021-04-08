@@ -1,6 +1,6 @@
 publish:
   image: curlimages/curl:latest
-  stage: publish
+  stage: build
   variables:
     URL: "https://$CI_SERVER_HOST/api/v4/projects/$CI_PROJECT_ID/packages/composer?job_token=$CI_JOB_TOKEN"
   script:
